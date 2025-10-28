@@ -11,10 +11,12 @@ Try it at your own risk!!
 To try a simple boot printing a message:
 
 make
+
 make runsimpleboot
 
 To try a second stage loader:
 
 make
+
 make bootwithsecond
 
