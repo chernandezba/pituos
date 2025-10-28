@@ -14,6 +14,8 @@ Compile
 nasm -f bin boot.asm -o boot.bin
 x86_64-elf-gcc -ffreestanding -mno-red-zone -m64 -c kernel.c -o kernel.o
 x86_64-elf-ld -Ttext 0x1000 -o kernel.bin kernel.o --oformat binary
+
+
 cat boot.bin kernel.bin > os.img
 
 

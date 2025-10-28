@@ -70,11 +70,23 @@ ProtectedMode:
 ; Configurar tablas de paginación mínimas
 ; ========================
     ; 1 GB identity map
-    mov dword [PML4], PDPT | 0x3
-    mov dword [PDPT], PD | 0x3
+    ;mov dword [PML4], PDPT | 0x3
+
+mov eax, PDPT
+or eax, 0x3
+mov [PML4], eax
+
+    ;mov dword [PDPT], PD | 0x3
+
+mov eax, PD
+or eax, 0x3
+mov [PDPT], eax
+
+
     mov dword [PD], 0x00000083  ; 1GB page
 
     mov eax, PML4
+    and eax, 0xFFFFF000   ; alinear a 4 KiB
     mov cr3, eax
 
 ; Activar paging + long mode
@@ -88,7 +100,7 @@ ProtectedMode:
 ; ========================
 ; Tablas de paginación
 ; ========================
-align 4096
+;align 4096
 PML4: dq 0
 PDPT: dq 0
 PD:   dq 0
@@ -106,8 +118,12 @@ LongMode:
     mov gs, ax
 
     mov rsp, 0x80000
-    extern kernel_main
-    call kernel_main
+
+    ; Llamar directamente al kernel en dirección fija
+    call 0x0000000000001000   ; dirección del kernel
+
+    ;extern kernel_main
+    ;call kernel_main
 
 hang:
     hlt
