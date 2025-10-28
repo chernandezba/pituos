@@ -4,6 +4,26 @@
 
 start:
     cli
+
+mov ax, 0xB800   ; dirección del video memory
+mov es, ax        ; cargar segmento en ES
+xor di, di        ; offset 0 dentro de ES
+mov al, 'P'       ; caracter
+mov [es:di], al   ; escribir en pantalla
+inc di
+inc di
+mov al, 'I'
+mov [es:di], al
+inc di
+inc di
+mov al, 'T'
+mov [es:di], al
+inc di
+inc di
+mov al, 'U'
+mov [es:di], al
+
+
     xor ax, ax
     mov ds, ax
     mov es, ax
