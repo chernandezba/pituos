@@ -1,9 +1,14 @@
 ; stage2.asm – transición segura a 64-bit
 [BITS 16]
-[ORG 0x1000]
+[ORG 0x100]
 
 stage2_start:
     cli
+mov edi, 0xB8000   ; dirección del video memory
+
+mov al,'p'
+mov [edi], al
+
     lgdt [gdt_descriptor]
 
     ; Activar modo protegido
@@ -19,8 +24,6 @@ protected_mode_entry:
 
 mov edi, 0xB8000   ; dirección del video memory
 
-mov al,'p'
-mov [edi], al
 inc al
 inc al
 

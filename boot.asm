@@ -42,7 +42,7 @@ mov [es:di], al
     loop .copy_loop
 
     ; Saltar a stage2
-    jmp 0x0000:0x1000
+    jmp 0x0000:0x100
 
 ; ===============================
 ; Datos bootloader
