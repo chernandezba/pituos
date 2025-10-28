@@ -1,18 +1,11 @@
-#include <stdint.h>
-
-static volatile uint16_t* const VGA = (uint16_t*)0xB8000;
-
-void print(const char* s) {
-    uint16_t* vga = (uint16_t*)VGA;
-    uint16_t i = 0;
-    while (s[i]) {
-        vga[i] = (0x07 << 8) | s[i];
-        i++;
-    }
-}
-
+// kernel.c – kernel 64-bit
 void kernel_main() {
-    print("Hello from PituOS v0.001");
-    for (;;) __asm__("hlt");
+    volatile char *video = (volatile char*)0xB8000;
+    video[0] = 'H';
+    video[1] = 0x07; // color gris
+    video[2] = 'i';
+    video[3] = 0x07;
+
+    while (1) { } // bucle infinito
 }
 

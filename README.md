@@ -11,17 +11,22 @@ Try it at your own risk!!
 
 Compile
 
+
+x86_64-elf-gcc -ffreestanding -c kernel.c -o kernel.o -O2 -Wall
+x86_64-elf-ld -Ttext 0x2000 -o kernel.bin kernel.o --oformat binary
+
+
 nasm -f bin boot.asm -o boot.bin
-x86_64-elf-gcc -ffreestanding -mno-red-zone -m64 -c kernel.c -o kernel.o
-x86_64-elf-ld -Ttext 0x1000 -o kernel.bin kernel.o --oformat binary
+nasm -f bin stage2.asm -o stage2.bin
 
 
-cat boot.bin kernel.bin > os.img
-
+cat boot.bin stage2.bin kernel.bin > os.img
 
 - Run on qemu:
 
 qemu-system-x86_64 -drive format=raw,file=os.img
+o
+qemu-system-x86_64 -kernel kernel.bin
 
 - Run on Virtual Box
 
