@@ -8,7 +8,7 @@ simpleboot.bin: simpleboot.asm
 
 simpleboot: simpleboot.bin
 
-runsimpleboot:
+runsimpleboot: simpleboot
 	qemu-system-x86_64 -drive format=raw,file=simpleboot.bin
 
 
@@ -29,5 +29,5 @@ image.bin: bootwithsecond.bin loader.bin
 
 bootwithsecond: bootwithsecond.bin loader_entry.o loader.o loader.bin image.bin
 
-runbootwithsecond:
+runbootwithsecond: bootwithsecond
 	qemu-system-x86_64 -drive format=raw,file=image.bin

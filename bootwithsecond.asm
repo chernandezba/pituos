@@ -4,10 +4,6 @@
 start:
     	cli
 
-	mov ax, 0xB800   ; dirección del video memory
-	mov es, ax        ; cargar segmento en ES
-	xor di, di        ; offset 0 dentro de ES
-
 	mov si, texto
 	call printstring
 
@@ -22,9 +18,9 @@ texto: db 'P',0x70,'i',0x70,'t',0x70,'u',0x70,'O',0x70,'S',0x70,' ',0x07,0
 error: db 'E',0x70,'R',0x70,'R',0x70,0
 
 printstring:
-        mov ax, 0xB800   ; dirección del video memory
-        mov es, ax        ; cargar segmento en ES
-        xor di, di        ; offset 0 dentro de ES
+        mov ax, 0xB800    ;  vga
+        mov es, ax
+        xor di, di        ; destino en la pantalla
 
 print:  lodsb
         or al,al
@@ -46,13 +42,12 @@ disk_read:
 	;; al = number of sectors to read (1 - 128)
 	;; ch = track/cylinder number
 	;; dh = head number
-	;; cl = sector number
-	mov ah, 0x02
-	;mov al, dh
+	;; cl = sector number (starting on 1)
+	mov ah, 0x02 ; Function Read Sectors From Drive 
 	mov al, 1
-	mov ch, 0x00
-	mov dh, 0x00
-	mov cl, 0x02
+	mov ch, 0
+	mov dh, 0
+	mov cl, 2
 	int 0x13
 
 	;; in case of read error
