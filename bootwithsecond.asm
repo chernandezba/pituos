@@ -44,7 +44,7 @@ disk_read:
 	;; dh = head number
 	;; cl = sector number (starting on 1)
 	mov ah, 0x02 ; Function Read Sectors From Drive 
-	mov al, 1
+	mov al, 1 ; cargar 1 sector
 	mov ch, 0
 	mov dh, 0
 	mov cl, 2

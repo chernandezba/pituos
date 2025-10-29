@@ -7,12 +7,14 @@ extern void loader_main() {
 	for (int i = 0; i < 26; i++) {
 		char c;
 		//c = 0x41 + i;
-		if (i==0) c='S';
-		else if (i==1) c='t';
-		else if (i==2) c='a';
-		else if (i==3) c='g';
-		else if (i==4) c='e';
-		else if (i==5) c='2';
+
+//Por alguna razon si meto 3 mas else if, se bloquea, incluso aun cargando mas sectores desde disk_read
+               if (i==0) c='S';
+               else if (i==1) c='t';
+               else if (i==2) c='a';
+               else if (i==3) c='g';
+               else if (i==4) c='e';
+               else if (i==5) c='2';
 		else c='.';
 		//char c = welcome[i];
 
