@@ -1,0 +1,36 @@
+{
+  "name": "pitu-watchface",
+  "author": "MakeAwesomeHappen",
+  "version": "1.0.0",
+  "keywords": ["pebble-app"],
+  "private": true,
+  "dependencies": {},
+  "pebble": {
+    "displayName": "pitu-watchface",
+    "uuid": "838de7f5-2921-46ec-9f0e-06be79525f78",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "basalt",
+      "emery"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "messageKeys": [
+      "dummy"
+    ],
+    "resources": {
+
+      "media": [
+        {
+          "type": "bitmap",
+          "name": "IMAGE_BACKGROUND0",
+          "file": "images/pitu.png"
+        }
+      ]
+
+    }
+
+  }
+}

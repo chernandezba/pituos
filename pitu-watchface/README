@@ -1,0 +1,12 @@
+Compile the project (after cding to your project directory):
+
+pebble build
+
+Install the app on an emulator for the Pebble Time:
+
+pebble install --emulator basalt
+
+Or, install the app/watchface on your phone (replace IP with your phone's IP shown in the Pebble app):
+
+pebble install --phone IP
+
