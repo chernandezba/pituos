@@ -1,4 +1,16 @@
-PituOS wathcface
+PituOS Pebble watchface for Pebble Time and Pebble Time 2
+
+Install
+-------
+
+You may install the compiled watchface found on build/pitu-watchface.pbw
+
+Compile
+-------
+
+It you want to compile from source code, you need first the Pebble SDK
+
+https://developer.rebble.io/sdk/
 
 Compile the project (after cding to your project directory):
 
