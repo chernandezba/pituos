@@ -1,7 +1,7 @@
 {
   "name": "pitu-watchface",
-  "author": "MakeAwesomeHappen",
-  "version": "1.0.0",
+  "author": "Cesar Hernandez",
+  "version": "1.1.0",
   "keywords": ["pebble-app"],
   "private": true,
   "dependencies": {},
@@ -21,7 +21,6 @@
       "dummy"
     ],
     "resources": {
-
       "media": [
         {
           "type": "bitmap",
@@ -29,7 +28,6 @@
           "file": "images/pitu.png"
         }
       ]
-
     }
 
   }
